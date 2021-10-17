@@ -1,0 +1,98 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.example.noteapp"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion kotlin_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    //testing
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$junit_ext"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    // Core KTX
+    implementation "androidx.core:core-ktx:$core_ktx"
+
+    //AppCompat
+    implementation "androidx.appcompat:appcompat:$appcompat"
+
+    //Android Materials
+    implementation "com.google.android.material:material:$material"
+
+    //Lifecycle runtime
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime_ktx"
+
+    // Compose dependencies
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_viewmodel_compose"
+    implementation "androidx.navigation:navigation-compose:$navigation_compose"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.activity:activity-compose:$activity_compose"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android"
+
+    //Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:$dagger_hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_viewmodel"
+    kapt "androidx.hilt:hilt-compiler:$hilt_compiler"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room"
+    kapt "androidx.room:room-compiler:$room"
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room"
+}
