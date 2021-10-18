@@ -14,15 +14,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object TestAppModule {
 
     @Provides
     @Singleton
     fun provideRoomDatabase(application: Application): NoteDatabase =
-        Room.databaseBuilder(
+        Room.inMemoryDatabaseBuilder(
             application,
-            NoteDatabase::class.java,
-            NoteDatabase.DATABASE_NAME
+            NoteDatabase::class.java
         ).build()
 
     @Provides

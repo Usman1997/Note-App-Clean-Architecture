@@ -1,7 +1,8 @@
-package com.example.noteapp.notes.domain.repository
+package com.example.noteapp.notes.data.repository
 
 import com.example.noteapp.notes.data.data_source.NoteDao
 import com.example.noteapp.notes.data.entity.Note
+import com.example.noteapp.notes.domain.repository.NotesRepository
 import kotlinx.coroutines.flow.Flow
 
 class NotesRepositoryImpl(private val noteDao: NoteDao): NotesRepository {
